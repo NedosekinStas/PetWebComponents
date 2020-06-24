@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <template class="webComponent">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia quas quo, aliquid rem veritatis eum magni? Vitae quae assumenda delectus quas, sit aspernatur at sunt, nostrum iusto quibusdam laudantium iste?</p>
+    </template> -->
+
+    
+    <template>
+        <p>Имя шаблона <span class="templateName"></span>.</p>
+        <p>Было скопировано <span class="templateCount"></span> раз.</p>
+    </template>
+
+    <button class="addButton">Добавить шаблон</button>
+    <script>
+        // // Получение шаблона
+        // let tmp = document.querySelector('.webComponent')
+        // console.log(tmp)
+        // // Клонирование шаблона так же всего содержимого
+        // let tmpClone = document.importNode(tmp.content, true)
+        // console.log(tmpClone)
+        // // Добавление содержимого шаблона в dom, без данной операции парсить бразеру нечего
+        // document.body.appendChild(tmpClone)
+
+
+
+        const something = function (){
+            let counterTmp = 0
+            window.addEventListener('load', () => {
+                document.querySelector('.addButton').addEventListener('click', () =>{
+                    // Создание шаблона
+                    let tmp = document.querySelector('template')
+                    let tmpClone = document.importNode(tmp.content, true)
+                    // Внедрение данных в шаблон
+                    tmpClone.querySelector('.templateName').textContent = 'Какой-то шаблон'
+                    tmpClone.querySelector('.templateCount').textContent = ++counterTmp
+                    // Добавление содержимого шаблона в dom, без данной операции парсить бразеру нечего
+                    document.body.appendChild(tmpClone)
+                })
+            })
+        }() 
+    </script>
+</body>
+</html>
