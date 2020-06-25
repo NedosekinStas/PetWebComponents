@@ -6,18 +6,27 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- Example 1 -->
     <!-- <template class="webComponent">
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia quas quo, aliquid rem veritatis eum magni? Vitae quae assumenda delectus quas, sit aspernatur at sunt, nostrum iusto quibusdam laudantium iste?</p>
     </template> -->
 
-    
-    <template>
+    <!-- Example 2 -->
+    <!-- <template>
         <p>Имя шаблона <span class="templateName"></span>.</p>
         <p>Было скопировано <span class="templateCount"></span> раз.</p>
     </template>
 
+    <label> Введите имя шаблона</label> <br />
+    <input type="text" class="templateText"><br /><br />
     <button class="addButton">Добавить шаблон</button>
+     -->
+
+     <gallery-component></gallery-component>
+
     <script>
+
+        // Example 1
         // // Получение шаблона
         // let tmp = document.querySelector('.webComponent')
         // console.log(tmp)
@@ -28,22 +37,66 @@
         // document.body.appendChild(tmpClone)
 
 
+        // Example 2
 
-        const something = function (){
-            let counterTmp = 0
-            window.addEventListener('load', () => {
-                document.querySelector('.addButton').addEventListener('click', () =>{
-                    // Создание шаблона
-                    let tmp = document.querySelector('template')
-                    let tmpClone = document.importNode(tmp.content, true)
-                    // Внедрение данных в шаблон
-                    tmpClone.querySelector('.templateName').textContent = 'Какой-то шаблон'
-                    tmpClone.querySelector('.templateCount').textContent = ++counterTmp
-                    // Добавление содержимого шаблона в dom, без данной операции парсить бразеру нечего
-                    document.body.appendChild(tmpClone)
-                })
-            })
-        }() 
+        // const something = function (){
+        //     let counterTmp = 0
+        //     window.addEventListener('load', () => {
+        //         document.querySelector('.addButton').addEventListener('click', () =>{
+        //             // Создание шаблона
+        //             let tmp = document.querySelector('template')
+        //             let tmpClone = document.importNode(tmp.content, true)
+        //             let tmpText = document.querySelector('.templateText').value
+        //             // Внедрение данных в шаблон
+        //             tmpClone.querySelector('.templateName').textContent = `${tmpText}`
+        //             tmpClone.querySelector('.templateCount').textContent = ++counterTmp
+        //             // Добавление содержимого шаблона в dom, без данной операции парсить бразеру нечего
+        //             document.body.appendChild(tmpClone)
+        //         })
+        //     })
+        // }()
+
+        // Example 3
+
+        // customElements.define('gallery-component', class extends HTMLElement {
+        //     constructor(){
+        //         super()
+        //         this.innerHTML = `
+        //         <div class="gallery__block">
+        //             <div class="container">
+        //                 <div class="row">
+        //                         <img src="img1" alt="Фото-1">
+        //                         <img src="img2" alt="Фото-2">
+        //                         <img src="img3" alt="Фото-3">
+        //                         <img src="img4" alt="Фото-4">
+        //                         <img src="img5" alt="Фото-5">
+        //                 </div>
+        //             </div>
+        //         </div>
+        //         `
+        //     }
+        // })
+
+        // Или использовать публичный класс
+        class galleryComponent extends HTMLElement {
+            constructor() {
+                super()
+                this.innerHTML = `
+                <div class="gallery__block">
+                    <div class="container">
+                        <div class="row">
+                                <img src="img1" alt="Фото-1">
+                                <img src="img2" alt="Фото-2">
+                                <img src="img3" alt="Фото-3">
+                                <img src="img4" alt="Фото-4">
+                                <img src="img5" alt="Фото-5">
+                        </div>
+                    </div>
+                </div>
+                `
+                }
+            }
+            customElements.define('gallery-component', galleryComponent);
     </script>
 </body>
 </html>
